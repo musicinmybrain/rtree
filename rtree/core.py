@@ -308,7 +308,7 @@ rt.IndexProperty_SetDimension.restype = ctypes.c_int
 rt.IndexProperty_SetDimension.errcheck = check_return
 
 rt.IndexProperty_GetDimension.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetDimension.restype = ctypes.c_int
+rt.IndexProperty_GetDimension.restype = ctypes.c_uint32
 rt.IndexProperty_GetDimension.errcheck = check_value
 
 rt.IndexProperty_SetIndexVariant.argtypes = [ctypes.c_void_p, ctypes.c_int]
@@ -332,7 +332,7 @@ rt.IndexProperty_SetIndexCapacity.restype = ctypes.c_int
 rt.IndexProperty_SetIndexCapacity.errcheck = check_return
 
 rt.IndexProperty_GetIndexCapacity.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetIndexCapacity.restype = ctypes.c_int
+rt.IndexProperty_GetIndexCapacity.restype = ctypes.c_uint32
 rt.IndexProperty_GetIndexCapacity.errcheck = check_value
 
 rt.IndexProperty_SetLeafCapacity.argtypes = [ctypes.c_void_p, ctypes.c_uint32]
@@ -340,7 +340,7 @@ rt.IndexProperty_SetLeafCapacity.restype = ctypes.c_int
 rt.IndexProperty_SetLeafCapacity.errcheck = check_return
 
 rt.IndexProperty_GetLeafCapacity.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetLeafCapacity.restype = ctypes.c_int
+rt.IndexProperty_GetLeafCapacity.restype = ctypes.c_uint32
 rt.IndexProperty_GetLeafCapacity.errcheck = check_value
 
 rt.IndexProperty_SetPagesize.argtypes = [ctypes.c_void_p, ctypes.c_uint32]
@@ -348,7 +348,7 @@ rt.IndexProperty_SetPagesize.restype = ctypes.c_int
 rt.IndexProperty_SetPagesize.errcheck = check_return
 
 rt.IndexProperty_GetPagesize.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetPagesize.restype = ctypes.c_int
+rt.IndexProperty_GetPagesize.restype = ctypes.c_uint32
 rt.IndexProperty_GetPagesize.errcheck = check_value
 
 rt.IndexProperty_SetLeafPoolCapacity.argtypes = \
@@ -357,7 +357,7 @@ rt.IndexProperty_SetLeafPoolCapacity.restype = ctypes.c_int
 rt.IndexProperty_SetLeafPoolCapacity.errcheck = check_return
 
 rt.IndexProperty_GetLeafPoolCapacity.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetLeafPoolCapacity.restype = ctypes.c_int
+rt.IndexProperty_GetLeafPoolCapacity.restype = ctypes.c_uint32
 rt.IndexProperty_GetLeafPoolCapacity.errcheck = check_value
 
 rt.IndexProperty_SetIndexPoolCapacity.argtypes = \
@@ -366,7 +366,7 @@ rt.IndexProperty_SetIndexPoolCapacity.restype = ctypes.c_int
 rt.IndexProperty_SetIndexPoolCapacity.errcheck = check_return
 
 rt.IndexProperty_GetIndexPoolCapacity.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetIndexPoolCapacity.restype = ctypes.c_int
+rt.IndexProperty_GetIndexPoolCapacity.restype = ctypes.c_uint32
 rt.IndexProperty_GetIndexPoolCapacity.errcheck = check_value
 
 rt.IndexProperty_SetRegionPoolCapacity.argtypes = \
@@ -375,7 +375,7 @@ rt.IndexProperty_SetRegionPoolCapacity.restype = ctypes.c_int
 rt.IndexProperty_SetRegionPoolCapacity.errcheck = check_return
 
 rt.IndexProperty_GetRegionPoolCapacity.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetRegionPoolCapacity.restype = ctypes.c_int
+rt.IndexProperty_GetRegionPoolCapacity.restype = ctypes.c_uint32
 rt.IndexProperty_GetRegionPoolCapacity.errcheck = check_value
 
 rt.IndexProperty_SetPointPoolCapacity.argtypes = \
@@ -384,7 +384,7 @@ rt.IndexProperty_SetPointPoolCapacity.restype = ctypes.c_int
 rt.IndexProperty_SetPointPoolCapacity.errcheck = check_return
 
 rt.IndexProperty_GetPointPoolCapacity.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetPointPoolCapacity.restype = ctypes.c_int
+rt.IndexProperty_GetPointPoolCapacity.restype = ctypes.c_uint32
 rt.IndexProperty_GetPointPoolCapacity.errcheck = check_value
 
 rt.IndexProperty_SetBufferingCapacity.argtypes = \
@@ -393,7 +393,7 @@ rt.IndexProperty_SetBufferingCapacity.restype = ctypes.c_int
 rt.IndexProperty_SetBufferingCapacity.errcheck = check_return
 
 rt.IndexProperty_GetBufferingCapacity.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetBufferingCapacity.restype = ctypes.c_int
+rt.IndexProperty_GetBufferingCapacity.restype = ctypes.c_uint32
 rt.IndexProperty_GetBufferingCapacity.errcheck = check_value
 
 rt.IndexProperty_SetEnsureTightMBRs.argtypes = \
@@ -402,7 +402,7 @@ rt.IndexProperty_SetEnsureTightMBRs.restype = ctypes.c_int
 rt.IndexProperty_SetEnsureTightMBRs.errcheck = check_return
 
 rt.IndexProperty_GetEnsureTightMBRs.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetEnsureTightMBRs.restype = ctypes.c_int
+rt.IndexProperty_GetEnsureTightMBRs.restype = ctypes.c_uint32
 rt.IndexProperty_GetEnsureTightMBRs.errcheck = check_value
 
 rt.IndexProperty_SetOverwrite.argtypes = [ctypes.c_void_p, ctypes.c_uint32]
@@ -410,7 +410,7 @@ rt.IndexProperty_SetOverwrite.restype = ctypes.c_int
 rt.IndexProperty_SetOverwrite.errcheck = check_return
 
 rt.IndexProperty_GetOverwrite.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetOverwrite.restype = ctypes.c_int
+rt.IndexProperty_GetOverwrite.restype = ctypes.c_uint32
 rt.IndexProperty_GetOverwrite.errcheck = check_value
 
 rt.IndexProperty_SetNearMinimumOverlapFactor.argtypes = \
@@ -419,7 +419,7 @@ rt.IndexProperty_SetNearMinimumOverlapFactor.restype = ctypes.c_int
 rt.IndexProperty_SetNearMinimumOverlapFactor.errcheck = check_return
 
 rt.IndexProperty_GetNearMinimumOverlapFactor.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetNearMinimumOverlapFactor.restype = ctypes.c_int
+rt.IndexProperty_GetNearMinimumOverlapFactor.restype = ctypes.c_uint32
 rt.IndexProperty_GetNearMinimumOverlapFactor.errcheck = check_value
 
 rt.IndexProperty_SetWriteThrough.argtypes = [ctypes.c_void_p, ctypes.c_uint32]
@@ -427,7 +427,7 @@ rt.IndexProperty_SetWriteThrough.restype = ctypes.c_int
 rt.IndexProperty_SetWriteThrough.errcheck = check_return
 
 rt.IndexProperty_GetWriteThrough.argtypes = [ctypes.c_void_p]
-rt.IndexProperty_GetWriteThrough.restype = ctypes.c_int
+rt.IndexProperty_GetWriteThrough.restype = ctypes.c_uint32
 rt.IndexProperty_GetWriteThrough.errcheck = check_value
 
 rt.IndexProperty_SetFillFactor.argtypes = [ctypes.c_void_p, ctypes.c_double]
