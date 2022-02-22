@@ -74,6 +74,10 @@ def free_error_msg_ptr(result, func, cargs):
 # load the shared library by looking in likely places
 rt = finder.load()
 
+rt.SIDX_Version.argtypes = []
+rt.SIDX_Version.restype = ctypes.POINTER(ctypes.c_char)
+rt.SIDX_Version.errcheck = free_returned_char_p  # type: ignore
+
 rt.Error_GetLastErrorNum.argtypes = []
 rt.Error_GetLastErrorNum.restype = ctypes.c_int
 
@@ -95,13 +99,26 @@ rt.Index_Create.argtypes = [ctypes.c_void_p]
 rt.Index_Create.restype = ctypes.c_void_p
 rt.Index_Create.errcheck = check_void
 
-NEXTFUNC = ctypes.CFUNCTYPE(ctypes.c_int,
-                            ctypes.POINTER(ctypes.c_int64),
-                            ctypes.POINTER(ctypes.POINTER(ctypes.c_double)),
-                            ctypes.POINTER(ctypes.POINTER(ctypes.c_double)),
-                            ctypes.POINTER(ctypes.c_uint32),
-                            ctypes.POINTER(ctypes.POINTER(ctypes.c_ubyte)),
-                            ctypes.POINTER(ctypes.c_size_t))
+_nDataLength_size_t = True
+try:
+    _major, _minor, _patch = (
+        int(part) for part in rt.SIDX_Version().decode("ascii").split(".")
+    )
+except (ValueError, UnicodeDecodeError):
+    pass  # weird version; assume latest ABI
+else:
+    if (_major, _minor, _patch) < (1, 9, 0):
+        # Headers had size_t*, but implementation had uint32_t*
+        _nDataLength_size_t = False
+NEXTFUNC = ctypes.CFUNCTYPE(
+    ctypes.c_int,
+    ctypes.POINTER(ctypes.c_int64),
+    ctypes.POINTER(ctypes.POINTER(ctypes.c_double)),
+    ctypes.POINTER(ctypes.POINTER(ctypes.c_double)),
+    ctypes.POINTER(ctypes.c_uint32),
+    ctypes.POINTER(ctypes.POINTER(ctypes.c_ubyte)),
+    ctypes.POINTER(ctypes.c_size_t if _nDataLength_size_t else ctypes.c_uint32),
+)
 
 rt.Index_CreateWithStream.argtypes = [ctypes.c_void_p, NEXTFUNC]
 rt.Index_CreateWithStream.restype = ctypes.c_void_p
@@ -524,10 +541,6 @@ rt.SIDX_NewBuffer.errcheck = check_void
 
 rt.SIDX_DeleteBuffer.argtypes = [ctypes.c_void_p]
 rt.SIDX_DeleteBuffer.restype = None
-
-rt.SIDX_Version.argtypes = []
-rt.SIDX_Version.restype = ctypes.POINTER(ctypes.c_char)
-rt.SIDX_Version.errcheck = free_returned_char_p
 
 # TPR-Tree API
 try:
